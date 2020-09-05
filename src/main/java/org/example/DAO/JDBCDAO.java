@@ -28,7 +28,6 @@ public class JDBCDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 int i=1;
                 while (rs.next()) {
-                    System.out.println(rs.getInt("id"));
                     if(i<=2) {
                         temp.add(rs.getInt(1));
                     }
@@ -54,12 +53,13 @@ public class JDBCDAO {
                 }
             }
         try (Connection conn = DriverManager.getConnection(url, uname, pass);
-             PreparedStatement stmt = conn.prepareStatement("SELECT id from Problems Where id < ? ORDER BY id LIMIT 2")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT id from Problems Where id < ? ORDER BY id DESC LIMIT 2")) {
             stmt.setInt(1, pageNumber);
             List<Integer> temp = new ArrayList<>();
             try (ResultSet rs = stmt.executeQuery()) {
                 int i = 1;
                 while (rs.next()) {
+                    System.out.println(rs.getInt("id"));
                     if (i == 2) {
                         previousPage.setId(rs.getInt("id"));
                     }
