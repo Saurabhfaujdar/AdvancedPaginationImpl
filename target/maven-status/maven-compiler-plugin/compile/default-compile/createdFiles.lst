@@ -1,0 +1,4 @@
+org/example/DAO/JDBCDAO.class
+org/example/Model/ProblemModel.class
+org/example/MyResource.class
+org/example/ProblemResource.class
